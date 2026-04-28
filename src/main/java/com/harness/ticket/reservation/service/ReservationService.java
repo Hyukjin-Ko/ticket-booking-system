@@ -8,8 +8,10 @@ import com.harness.ticket.global.exception.BusinessException;
 import com.harness.ticket.global.redis.RedisKeys;
 import com.harness.ticket.global.response.ErrorCode;
 import com.harness.ticket.reservation.domain.Reservation;
+import com.harness.ticket.reservation.domain.ReservationStatus;
 import com.harness.ticket.reservation.dto.ReservationRequest;
 import com.harness.ticket.reservation.dto.ReservationResponse;
+import com.harness.ticket.reservation.payment.PaymentGateway;
 import com.harness.ticket.reservation.repository.ReservationRepository;
 import java.time.Clock;
 import java.time.Duration;
@@ -33,6 +35,7 @@ public class ReservationService {
     private final SeatRepository seatRepository;
     private final ConcertRepository concertRepository;
     private final StringRedisTemplate redisTemplate;
+    private final PaymentGateway paymentGateway;
     private final Clock clock;
 
     @Transactional
@@ -91,5 +94,49 @@ public class ReservationService {
                 userId, concertId, seat.getId(), saved.getId());
 
         return ReservationResponse.from(saved);
+    }
+
+    @Transactional(noRollbackFor = BusinessException.class)
+    public ReservationResponse pay(Long userId, Long reservationId, String mockHeader) {
+        Reservation r = reservationRepository.findById(reservationId)
+                .orElseThrow(() -> new BusinessException(ErrorCode.RESERVATION_NOT_FOUND));
+
+        if (!r.getUserId().equals(userId)) {
+            throw new BusinessException(ErrorCode.FORBIDDEN);
+        }
+
+        if (r.getStatus() == ReservationStatus.PAID) {
+            return ReservationResponse.from(r);
+        }
+        if (r.getStatus() == ReservationStatus.CANCELLED) {
+            throw new BusinessException(ErrorCode.INVALID_RESERVATION_STATE);
+        }
+
+        String seatKey = RedisKeys.seat(r.getConcertId(), r.getSeatId());
+        String stored = redisTemplate.opsForValue().get(seatKey);
+        if (stored == null) {
+            r.cancel(clock);
+            throw new BusinessException(ErrorCode.EXPIRED_RESERVATION);
+        }
+        if (!stored.equals(userId.toString())) {
+            throw new BusinessException(ErrorCode.FORBIDDEN);
+        }
+
+        boolean ok = paymentGateway.pay(reservationId, mockHeader);
+        if (ok) {
+            r.pay(clock);
+        } else {
+            r.cancel(clock);
+        }
+        redisTemplate.delete(seatKey);
+        redisTemplate.opsForValue().decrement(RedisKeys.count(userId, r.getConcertId()));
+
+        if (!ok) {
+            log.info("payment failed reservationId={} userId={}", reservationId, userId);
+            throw new BusinessException(ErrorCode.PAYMENT_FAILED);
+        }
+
+        log.info("payment succeeded reservationId={} userId={}", reservationId, userId);
+        return ReservationResponse.from(r);
     }
 }

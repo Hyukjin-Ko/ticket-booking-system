@@ -20,6 +20,7 @@ import com.harness.ticket.reservation.domain.Reservation;
 import com.harness.ticket.reservation.domain.ReservationStatus;
 import com.harness.ticket.reservation.dto.ReservationRequest;
 import com.harness.ticket.reservation.dto.ReservationResponse;
+import com.harness.ticket.reservation.payment.PaymentGateway;
 import com.harness.ticket.reservation.repository.ReservationRepository;
 import java.lang.reflect.Field;
 import java.time.Clock;
@@ -58,6 +59,9 @@ class ReservationServiceTest {
     @Mock
     private ValueOperations<String, String> valueOperations;
 
+    @Mock
+    private PaymentGateway paymentGateway;
+
     private final Clock clock = Clock.fixed(NOW, ZoneOffset.UTC);
 
     private ReservationService service;
@@ -65,7 +69,7 @@ class ReservationServiceTest {
     @BeforeEach
     void setUp() {
         service = new ReservationService(
-                reservationRepository, seatRepository, concertRepository, redisTemplate, clock);
+                reservationRepository, seatRepository, concertRepository, redisTemplate, paymentGateway, clock);
     }
 
     private static Concert concertWithId(Long id, boolean queueEnabled) throws Exception {

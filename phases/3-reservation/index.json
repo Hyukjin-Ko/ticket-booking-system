@@ -21,7 +21,10 @@
     {
       "step": 2,
       "name": "payment",
-      "status": "pending"
+      "status": "completed",
+      "started_at": "2026-04-28T23:52:10+0900",
+      "summary": "PaymentGateway port + MockPaymentGatewayAdapter(헤더 강제·90/10 random·SecureRandom) + ReservationService.pay(멱등 PAID·만료 410·낙관락 자동 매핑·실패 시 cancel+정리) + POST /reservations/{id}/pay + 통합 8 시나리오(정상·실패·멱등·만료·타유저·없음·CANCELLED·낙관락충돌)",
+      "completed_at": "2026-04-29T00:03:00+0900"
     },
     {
       "step": 3,

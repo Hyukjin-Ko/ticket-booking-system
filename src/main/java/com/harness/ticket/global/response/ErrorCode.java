@@ -24,6 +24,8 @@ public enum ErrorCode {
     RESERVATION_NOT_FOUND(HttpStatus.NOT_FOUND, "RESERVATION_NOT_FOUND", "예약을 찾을 수 없습니다"),
     RESERVATION_CONFLICT(HttpStatus.CONFLICT, "RESERVATION_CONFLICT", "동시 처리 충돌이 발생했습니다"),
     INVALID_RESERVATION_STATE(HttpStatus.CONFLICT, "INVALID_RESERVATION_STATE", "예약 상태에서 허용되지 않는 작업입니다"),
+    PAYMENT_FAILED(HttpStatus.PAYMENT_REQUIRED, "PAYMENT_FAILED", "결제에 실패했습니다"),
+    EXPIRED_RESERVATION(HttpStatus.GONE, "EXPIRED_RESERVATION", "선점 시간이 만료되었습니다"),
     INTERNAL_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "INTERNAL_ERROR", "서버 오류가 발생했습니다");
 
     private final HttpStatus httpStatus;

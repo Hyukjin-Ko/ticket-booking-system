@@ -65,7 +65,7 @@ class GlobalExceptionHandlerTest {
         mockMvc.perform(get("/test/optimistic"))
                 .andExpect(status().isConflict())
                 .andExpect(jsonPath("$.success").value(false))
-                .andExpect(jsonPath("$.code").value("CONFLICT"));
+                .andExpect(jsonPath("$.code").value("RESERVATION_CONFLICT"));
     }
 
     @Test

@@ -45,8 +45,8 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ObjectOptimisticLockingFailureException.class)
     public ResponseEntity<ApiResponse<Object>> handleOptimisticLock(ObjectOptimisticLockingFailureException e) {
         log.warn("OptimisticLockingFailure: message={}", e.getMessage());
-        return ResponseEntity.status(ErrorCode.CONFLICT.getHttpStatus())
-                .body(ApiResponse.error(ErrorCode.CONFLICT));
+        return ResponseEntity.status(ErrorCode.RESERVATION_CONFLICT.getHttpStatus())
+                .body(ApiResponse.error(ErrorCode.RESERVATION_CONFLICT));
     }
 
     @ExceptionHandler(Exception.class)
