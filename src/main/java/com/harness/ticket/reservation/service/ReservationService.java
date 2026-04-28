@@ -47,7 +47,11 @@ public class ReservationService {
                 .orElseThrow(() -> new BusinessException(ErrorCode.NOT_FOUND, "공연을 찾을 수 없습니다"));
 
         if (concert.isQueueEnabled()) {
-            // phase 4-queue에서 SISMEMBER admit:{showId} {userId} 검사 추가 예정
+            Boolean admitted = redisTemplate.opsForSet()
+                    .isMember(RedisKeys.admit(concertId), userId.toString());
+            if (!Boolean.TRUE.equals(admitted)) {
+                throw new BusinessException(ErrorCode.NOT_ADMITTED);
+            }
         }
 
         String countKey = RedisKeys.count(userId, concertId);
