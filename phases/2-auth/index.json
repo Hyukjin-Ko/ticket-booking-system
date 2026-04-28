@@ -13,7 +13,10 @@
     {
       "step": 1,
       "name": "signup-login",
-      "status": "pending"
+      "status": "completed",
+      "started_at": "2026-04-28T22:46:28+0900",
+      "summary": "User 엔티티(@Setter 없음) + Flyway V2 + BCrypt 10 + AuthService(signup/login, INVALID_CREDENTIALS 통일) + AuthController(POST /auth/signup·login) + JwtAuthenticationEntryPoint(401 ApiResponse) + 한글 username 허용",
+      "completed_at": "2026-04-28T22:52:58+0900"
     },
     {
       "step": 2,
