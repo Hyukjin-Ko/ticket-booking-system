@@ -2,8 +2,23 @@
   "project": "harness_ticket",
   "phase": "2-auth",
   "steps": [
-    { "step": 0, "name": "security-foundation", "status": "pending" },
-    { "step": 1, "name": "signup-login", "status": "pending" },
-    { "step": 2, "name": "refresh-logout", "status": "pending" }
-  ]
+    {
+      "step": 0,
+      "name": "security-foundation",
+      "status": "completed",
+      "started_at": "2026-04-28T22:39:29+0900",
+      "summary": "Spring Security + jjwt 0.12 + JwtProvider(secret 길이 검증, Clock 주입) + JwtAuthFilter(access type만, /actuator skip) + SecurityConfig(STATELESS, permitAll, JwtAuthFilter 등록) + ErrorCode 5종 추가"
+    },
+    {
+      "step": 1,
+      "name": "signup-login",
+      "status": "pending"
+    },
+    {
+      "step": 2,
+      "name": "refresh-logout",
+      "status": "pending"
+    }
+  ],
+  "created_at": "2026-04-28T22:39:29+0900"
 }

@@ -29,6 +29,11 @@ spring:
       write-dates-as-timestamps: false
     time-zone: UTC
 
+jwt:
+  secret: ${JWT_SECRET}
+  access-ttl-minutes: 15
+  refresh-ttl-days: 14
+
 management:
   endpoints:
     web:
