@@ -14,3 +14,10 @@ build/
 .idea/
 *.iml
 *.log
+
+# secrets / env (NEVER commit)
+.env
+.envrc
+
+# os
+.DS_Store

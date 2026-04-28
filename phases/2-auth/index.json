@@ -1,0 +1,9 @@
+{
+  "project": "harness_ticket",
+  "phase": "2-auth",
+  "steps": [
+    { "step": 0, "name": "security-foundation", "status": "pending" },
+    { "step": 1, "name": "signup-login", "status": "pending" },
+    { "step": 2, "name": "refresh-logout", "status": "pending" }
+  ]
+}
