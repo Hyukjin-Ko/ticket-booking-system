@@ -12,7 +12,8 @@
     },
     {
       "dir": "3-reservation",
-      "status": "pending"
+      "status": "completed",
+      "completed_at": "2026-04-29T00:11:36+0900"
     }
   ]
 }
