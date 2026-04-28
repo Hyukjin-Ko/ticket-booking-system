@@ -16,7 +16,7 @@
       "status": "completed",
       "started_at": "2026-04-29T00:40:23+0900",
       "summary": "AdmitWorker @Scheduled fixedDelayString(tick-interval-sec*1000ms) + runOnce(public, public for IT) + ZPOPMIN admits-per-tick → SADD admit:{showId} + admit TTL 600s + 공연별 try/catch + 비원자성 명시. 통합 IT(정상·tick 제한·flag 무시·TTL 검증)",
-      "completed_at": "2026-04-29T00:48:00+0900"
+      "completed_at": "2026-04-29T00:48:32+0900"
     },
     {
       "step": 2,
