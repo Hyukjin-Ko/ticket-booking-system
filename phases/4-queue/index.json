@@ -1,0 +1,9 @@
+{
+  "project": "harness_ticket",
+  "phase": "4-queue",
+  "steps": [
+    { "step": 0, "name": "queue-domain", "status": "pending" },
+    { "step": 1, "name": "admit-worker", "status": "pending" },
+    { "step": 2, "name": "reservation-gate", "status": "pending" }
+  ]
+}

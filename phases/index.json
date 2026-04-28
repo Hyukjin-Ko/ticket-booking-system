@@ -14,6 +14,10 @@
       "dir": "3-reservation",
       "status": "completed",
       "completed_at": "2026-04-29T00:11:36+0900"
+    },
+    {
+      "dir": "4-queue",
+      "status": "pending"
     }
   ]
 }
