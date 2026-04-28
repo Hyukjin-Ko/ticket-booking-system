@@ -24,7 +24,7 @@
       "status": "completed",
       "started_at": "2026-04-28T22:54:02+0900",
       "summary": "AuthService.refresh(rotation + reuse detection + 사용자 탈퇴 가드) + AuthService.logout(DEL) + AuthController(POST /auth/refresh permitAll, /auth/logout authenticated) + 통합 테스트 7 시나리오(정상/만료/위조/access오용/logout 정상/Bearer 없음/위조 access)",
-      "completed_at": "2026-04-28T23:04:20+0900"
+      "completed_at": "2026-04-28T23:05:01+0900"
     }
   ],
   "created_at": "2026-04-28T22:39:29+0900"
