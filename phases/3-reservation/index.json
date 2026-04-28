@@ -2,9 +2,28 @@
   "project": "harness_ticket",
   "phase": "3-reservation",
   "steps": [
-    { "step": 0, "name": "concert-seat-domain", "status": "pending" },
-    { "step": 1, "name": "seat-reservation", "status": "pending" },
-    { "step": 2, "name": "payment", "status": "pending" },
-    { "step": 3, "name": "cancel-cleanup", "status": "pending" }
-  ]
+    {
+      "step": 0,
+      "name": "concert-seat-domain",
+      "status": "completed",
+      "started_at": "2026-04-28T23:34:09+0900",
+      "summary": "Concert/Seat 엔티티(@Setter 없음, Clock 주입) + V3 스키마 + V4 seed(공연1·좌석100) + ConcertQueryService + GET /concerts·/concerts/{id}/seats(authenticated, Pageable size≤100) + PageResponse 공통 DTO"
+    },
+    {
+      "step": 1,
+      "name": "seat-reservation",
+      "status": "pending"
+    },
+    {
+      "step": 2,
+      "name": "payment",
+      "status": "pending"
+    },
+    {
+      "step": 3,
+      "name": "cancel-cleanup",
+      "status": "pending"
+    }
+  ],
+  "created_at": "2026-04-28T23:34:09+0900"
 }
