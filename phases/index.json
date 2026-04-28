@@ -7,7 +7,8 @@
     },
     {
       "dir": "2-auth",
-      "status": "pending"
+      "status": "completed",
+      "completed_at": "2026-04-28T23:05:01+0900"
     }
   ]
 }
