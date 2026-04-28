@@ -7,7 +7,8 @@
       "name": "bootstrap",
       "status": "completed",
       "started_at": "2026-04-28T18:55:17+0900",
-      "summary": "Spring Boot 3.2.x + Postgres/Redis docker-compose + actuator health + Clock UTC + Flyway baseline 구축"
+      "summary": "Spring Boot 3.2.x + Postgres/Redis docker-compose + actuator health + Clock UTC + Flyway baseline 구축",
+      "completed_at": "2026-04-28T21:50:39+0900"
     },
     {
       "step": 1,
