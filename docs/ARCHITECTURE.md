@@ -188,7 +188,7 @@ PendingReservationCleaner (@Scheduled fixedDelay=300_000ms)
 - 모든 RequestDto에 `@Valid` 강제. `@NotBlank`, `@Size`, `@Pattern` 등 적용.
 - 검증 실패는 `MethodArgumentNotValidException` → `GlobalExceptionHandler`에서 필드별 에러 목록 응답:
   ```json
-  { "code": "INVALID_REQUEST", "message": "검증 실패",
+  { "success": false, "code": "INVALID_REQUEST", "message": "검증 실패",
     "data": { "errors": [{"field":"password", "reason":"size must be >= 8"}] } }
   ```
 

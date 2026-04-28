@@ -25,6 +25,8 @@
 
 ## API 스타일
 - REST + JSON.
-- 공통 응답 포맷: `{ code, message, data? }`.
+- 공통 응답 포맷: `{ success: boolean, code: string, message: string, data: object|null }`.
+  - 성공: `{ success: true, code: "OK", message: "...", data: {...} }`
+  - 실패: `{ success: false, code: "INVALID_REQUEST", message: "...", data: null }`
 - 인증 헤더: `Authorization: Bearer {jwt}`.
 - 에러 코드는 `ErrorCode` enum으로 전역 관리.

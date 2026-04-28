@@ -1,0 +1,8 @@
+{
+  "project": "harness_ticket",
+  "phase": "1-setup",
+  "steps": [
+    { "step": 0, "name": "bootstrap", "status": "pending" },
+    { "step": 1, "name": "common-foundations", "status": "pending" }
+  ]
+}
