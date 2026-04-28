@@ -7,7 +7,8 @@
       "name": "security-foundation",
       "status": "completed",
       "started_at": "2026-04-28T22:39:29+0900",
-      "summary": "Spring Security + jjwt 0.12 + JwtProvider(secret 길이 검증, Clock 주입) + JwtAuthFilter(access type만, /actuator skip) + SecurityConfig(STATELESS, permitAll, JwtAuthFilter 등록) + ErrorCode 5종 추가"
+      "summary": "Spring Security + jjwt 0.12 + JwtProvider(secret 길이 검증, Clock 주입) + JwtAuthFilter(access type만, /actuator skip) + SecurityConfig(STATELESS, permitAll, JwtAuthFilter 등록) + ErrorCode 5종 추가",
+      "completed_at": "2026-04-28T22:46:27+0900"
     },
     {
       "step": 1,
