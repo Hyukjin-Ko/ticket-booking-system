@@ -16,7 +16,7 @@
       "status": "completed",
       "started_at": "2026-04-28T23:40:50+0900",
       "summary": "Reservation 엔티티(@Version, 3-state 상태머신, pay/cancel 멱등) + V5 스키마 + ReservationService(SET NX PX 단일·1인4매·좌석검증·afterCompletion 보상) + POST /reservations(authenticated) + 동시성 테스트 100스레드→1성공/99실패 통과 + 한도/보상 IT",
-      "completed_at": "2026-04-28T23:55:00+0900"
+      "completed_at": "2026-04-28T23:52:10+0900"
     },
     {
       "step": 2,
