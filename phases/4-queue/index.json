@@ -7,7 +7,8 @@
       "name": "queue-domain",
       "status": "completed",
       "started_at": "2026-04-29T00:29:51+0900",
-      "summary": "QueueProperties + V6 seed(queueEnabled=true 공연 id=2) + QueueService(ZADD NX·ZRANK·ETA·공연 시작+1시간 TTL) + POST /queue/{showId}/enter + GET /queue/{showId}/me + ErrorCode 2종(QUEUE_NOT_ENABLED·NOT_IN_QUEUE) + 통합 9 시나리오"
+      "summary": "QueueProperties + V6 seed(queueEnabled=true 공연 id=2) + QueueService(ZADD NX·ZRANK·ETA·공연 시작+1시간 TTL) + POST /queue/{showId}/enter + GET /queue/{showId}/me + ErrorCode 2종(QUEUE_NOT_ENABLED·NOT_IN_QUEUE) + 통합 9 시나리오",
+      "completed_at": "2026-04-29T00:40:23+0900"
     },
     {
       "step": 1,
