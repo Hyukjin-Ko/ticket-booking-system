@@ -97,15 +97,17 @@ POST /reservations/{id}/pay   (header: X-Mock-Pay-Result?)
   └─ OptimisticLockException catch → 409 RESERVATION_CONFLICT
 ```
 
-### 사용자 능동 취소 시퀀스
+### 사용자 능동 취소 시퀀스 (멱등)
 ```
 DELETE /reservations/{id}
   ├─ @Transactional
-  ├─ 조회 + userId 일치 검증
-  ├─ status != PENDING → 409 INVALID_RESERVATION_STATE
-  ├─ Reservation.cancel() → DEL seat → DECR count
-  └─ 200 (멱등 — 이미 CANCELLED여도 200)
+  ├─ 조회 + userId 일치 검증 (불일치 → 403)
+  ├─ status == PAID → 409 INVALID_RESERVATION_STATE (환불은 MVP 제외)
+  ├─ status == CANCELLED → 200 (no-op, 멱등 보장)
+  └─ status == PENDING → Reservation.cancel() → DEL seat → DECR count → 200
 ```
+
+> **멱등성 보장**: 같은 reservation에 DELETE를 두 번 호출해도 두 번째는 200으로 응답. 클라이언트의 네트워크 재시도 안전.
 
 ### 인증 시퀀스
 ```

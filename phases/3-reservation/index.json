@@ -1,0 +1,10 @@
+{
+  "project": "harness_ticket",
+  "phase": "3-reservation",
+  "steps": [
+    { "step": 0, "name": "concert-seat-domain", "status": "pending" },
+    { "step": 1, "name": "seat-reservation", "status": "pending" },
+    { "step": 2, "name": "payment", "status": "pending" },
+    { "step": 3, "name": "cancel-cleanup", "status": "pending" }
+  ]
+}
