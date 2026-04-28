@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.harness.ticket.auth.repository.UserRepository;
 import com.harness.ticket.global.redis.RedisKeys;
+import com.harness.ticket.queue.scheduler.AdmitWorker;
 import com.harness.ticket.support.IntegrationTestSupport;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -18,13 +19,19 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
+// AdmitWorker 자동 실행이 enter/me 사이에 끼어들어 admitted 상태를 바꾸지 않도록 mock으로 대체.
+// 워커 자체 검증은 AdmitWorkerIT에서 별도로 수행 — 여기서는 큐 진입/조회 로직만 본다.
 @AutoConfigureMockMvc
 class QueueIT extends IntegrationTestSupport {
+
+    @MockBean
+    private AdmitWorker admitWorker;
 
     private static final Long QUEUED_SHOW_ID = 2L;
     private static final Long NON_QUEUED_SHOW_ID = 1L;
