@@ -139,4 +139,28 @@ public class ReservationService {
         log.info("payment succeeded reservationId={} userId={}", reservationId, userId);
         return ReservationResponse.from(r);
     }
+
+    @Transactional
+    public ReservationResponse cancelByUser(Long userId, Long reservationId) {
+        Reservation r = reservationRepository.findById(reservationId)
+                .orElseThrow(() -> new BusinessException(ErrorCode.RESERVATION_NOT_FOUND));
+
+        if (!r.getUserId().equals(userId)) {
+            throw new BusinessException(ErrorCode.FORBIDDEN);
+        }
+
+        if (r.getStatus() == ReservationStatus.PAID) {
+            throw new BusinessException(ErrorCode.INVALID_RESERVATION_STATE);
+        }
+
+        if (r.getStatus() == ReservationStatus.CANCELLED) {
+            return ReservationResponse.from(r);
+        }
+
+        r.cancel(clock);
+        redisTemplate.delete(RedisKeys.seat(r.getConcertId(), r.getSeatId()));
+        redisTemplate.opsForValue().decrement(RedisKeys.count(userId, r.getConcertId()));
+        log.info("user cancel reservationId={} userId={}", reservationId, userId);
+        return ReservationResponse.from(r);
+    }
 }

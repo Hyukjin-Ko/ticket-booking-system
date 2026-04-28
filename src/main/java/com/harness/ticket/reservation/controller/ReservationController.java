@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -39,5 +40,13 @@ public class ReservationController {
             @RequestHeader(value = "X-Mock-Pay-Result", required = false) String mockHeader) {
         ReservationResponse res = reservationService.pay(userId, id, mockHeader);
         return ApiResponse.success(res, "결제가 완료되었습니다");
+    }
+
+    @DeleteMapping("/{id}")
+    public ApiResponse<ReservationResponse> cancel(
+            @AuthenticationPrincipal Long userId,
+            @PathVariable Long id) {
+        ReservationResponse res = reservationService.cancelByUser(userId, id);
+        return ApiResponse.success(res, "예약이 취소되었습니다");
     }
 }

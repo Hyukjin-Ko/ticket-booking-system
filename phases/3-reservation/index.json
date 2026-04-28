@@ -29,8 +29,13 @@
     {
       "step": 3,
       "name": "cancel-cleanup",
-      "status": "pending"
+      "status": "completed",
+      "started_at": "2026-04-29T00:03:39+0900",
+      "summary": "ReservationService.cancelByUser(멱등 200·PAID 409) + DELETE /reservations/{id} + PendingReservationCleaner @Scheduled 5분(FOR UPDATE SKIP LOCKED, Clock 주입) + 통합 시나리오(취소·멱등·PAID 거부·타유저·없음·만료 cleanup·혼재)",
+      "completed_at": "2026-04-29T00:10:53+0900"
     }
   ],
-  "created_at": "2026-04-28T23:34:09+0900"
+  "status": "completed",
+  "created_at": "2026-04-28T23:34:09+0900",
+  "completed_at": "2026-04-29T00:10:53+0900"
 }
