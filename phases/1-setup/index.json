@@ -2,7 +2,18 @@
   "project": "harness_ticket",
   "phase": "1-setup",
   "steps": [
-    { "step": 0, "name": "bootstrap", "status": "pending" },
-    { "step": 1, "name": "common-foundations", "status": "pending" }
-  ]
+    {
+      "step": 0,
+      "name": "bootstrap",
+      "status": "completed",
+      "started_at": "2026-04-28T18:55:17+0900",
+      "summary": "Spring Boot 3.2.x + Postgres/Redis docker-compose + actuator health + Clock UTC + Flyway baseline 구축"
+    },
+    {
+      "step": 1,
+      "name": "common-foundations",
+      "status": "pending"
+    }
+  ],
+  "created_at": "2026-04-28T18:55:17+0900"
 }

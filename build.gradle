@@ -1,0 +1,66 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.5'
+    id 'io.spring.dependency-management' version '1.1.5'
+}
+
+group = 'com.harness.ticket'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    testcontainersVersion = '1.20.4'
+    testcontainersRedisVersion = '2.2.2'
+    set('testcontainers.version', testcontainersVersion)
+}
+
+dependencyManagement {
+    dependencies {
+        dependencySet(group: 'org.flywaydb', version: '10.10.0') {
+            entry 'flyway-core'
+            entry 'flyway-database-postgresql'
+        }
+    }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+    implementation 'org.flywaydb:flyway-core'
+    implementation 'org.flywaydb:flyway-database-postgresql'
+    runtimeOnly 'org.postgresql:postgresql'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation "org.testcontainers:postgresql:${testcontainersVersion}"
+    testImplementation "org.testcontainers:junit-jupiter:${testcontainersVersion}"
+    testImplementation "com.redis:testcontainers-redis:${testcontainersRedisVersion}"
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+    jvmArgs '-Duser.timezone=UTC'
+    systemProperty 'api.version', '1.45'
+    environment 'DOCKER_API_VERSION', '1.45'
+}
+
+bootRun {
+    jvmArgs = ['-Duser.timezone=UTC']
+}
