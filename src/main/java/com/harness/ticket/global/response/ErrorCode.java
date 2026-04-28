@@ -18,6 +18,12 @@ public enum ErrorCode {
     NOT_FOUND(HttpStatus.NOT_FOUND, "NOT_FOUND", "리소스를 찾을 수 없습니다"),
     CONFLICT(HttpStatus.CONFLICT, "CONFLICT", "요청이 충돌합니다"),
     USERNAME_TAKEN(HttpStatus.CONFLICT, "USERNAME_TAKEN", "이미 사용 중인 아이디입니다"),
+    SEAT_NOT_FOUND(HttpStatus.NOT_FOUND, "SEAT_NOT_FOUND", "좌석을 찾을 수 없습니다"),
+    SEAT_ALREADY_HELD(HttpStatus.CONFLICT, "SEAT_ALREADY_HELD", "이미 선점된 좌석입니다"),
+    SEAT_LIMIT_EXCEEDED(HttpStatus.CONFLICT, "SEAT_LIMIT_EXCEEDED", "1인당 4좌석까지만 선점할 수 있습니다"),
+    RESERVATION_NOT_FOUND(HttpStatus.NOT_FOUND, "RESERVATION_NOT_FOUND", "예약을 찾을 수 없습니다"),
+    RESERVATION_CONFLICT(HttpStatus.CONFLICT, "RESERVATION_CONFLICT", "동시 처리 충돌이 발생했습니다"),
+    INVALID_RESERVATION_STATE(HttpStatus.CONFLICT, "INVALID_RESERVATION_STATE", "예약 상태에서 허용되지 않는 작업입니다"),
     INTERNAL_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "INTERNAL_ERROR", "서버 오류가 발생했습니다");
 
     private final HttpStatus httpStatus;
