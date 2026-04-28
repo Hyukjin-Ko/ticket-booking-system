@@ -26,6 +26,8 @@ public enum ErrorCode {
     INVALID_RESERVATION_STATE(HttpStatus.CONFLICT, "INVALID_RESERVATION_STATE", "예약 상태에서 허용되지 않는 작업입니다"),
     PAYMENT_FAILED(HttpStatus.PAYMENT_REQUIRED, "PAYMENT_FAILED", "결제에 실패했습니다"),
     EXPIRED_RESERVATION(HttpStatus.GONE, "EXPIRED_RESERVATION", "선점 시간이 만료되었습니다"),
+    QUEUE_NOT_ENABLED(HttpStatus.BAD_REQUEST, "QUEUE_NOT_ENABLED", "이 공연은 대기열을 사용하지 않거나 입장 가능 시간이 아닙니다"),
+    NOT_IN_QUEUE(HttpStatus.NOT_FOUND, "NOT_IN_QUEUE", "대기열에 등록되어 있지 않습니다"),
     INTERNAL_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "INTERNAL_ERROR", "서버 오류가 발생했습니다");
 
     private final HttpStatus httpStatus;

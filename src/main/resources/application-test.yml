@@ -9,3 +9,7 @@ jwt:
   secret: dGVzdC1zZWNyZXQtbXVzdC1iZS1hdC1sZWFzdC0zMi1ieXRlcy1sb25n
   access-ttl-minutes: 15
   refresh-ttl-days: 14
+
+queue:
+  tick-interval-sec: 1
+  admits-per-tick: 100

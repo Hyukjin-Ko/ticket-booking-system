@@ -34,6 +34,10 @@ jwt:
   access-ttl-minutes: 15
   refresh-ttl-days: 14
 
+queue:
+  tick-interval-sec: 1
+  admits-per-tick: 100
+
 management:
   endpoints:
     web:

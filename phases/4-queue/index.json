@@ -2,8 +2,23 @@
   "project": "harness_ticket",
   "phase": "4-queue",
   "steps": [
-    { "step": 0, "name": "queue-domain", "status": "pending" },
-    { "step": 1, "name": "admit-worker", "status": "pending" },
-    { "step": 2, "name": "reservation-gate", "status": "pending" }
-  ]
+    {
+      "step": 0,
+      "name": "queue-domain",
+      "status": "completed",
+      "started_at": "2026-04-29T00:29:51+0900",
+      "summary": "QueueProperties + V6 seed(queueEnabled=true 공연 id=2) + QueueService(ZADD NX·ZRANK·ETA·공연 시작+1시간 TTL) + POST /queue/{showId}/enter + GET /queue/{showId}/me + ErrorCode 2종(QUEUE_NOT_ENABLED·NOT_IN_QUEUE) + 통합 9 시나리오"
+    },
+    {
+      "step": 1,
+      "name": "admit-worker",
+      "status": "pending"
+    },
+    {
+      "step": 2,
+      "name": "reservation-gate",
+      "status": "pending"
+    }
+  ],
+  "created_at": "2026-04-29T00:29:51+0900"
 }
