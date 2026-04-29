@@ -10,6 +10,9 @@ const conflictCount = new Counter('seat_reserve_conflict');
 const VU_COUNT = 1000;
 
 export const options = {
+  // setup()이 1000명을 순차 생성 (BCrypt 10 ≈ 100ms/hash, signup+login = 200ms/user)
+  // → 1000 user × 200ms ≈ 200s. 안전 마진 포함 10분.
+  setupTimeout: '10m',
   scenarios: {
     contention: {
       executor: 'per-vu-iterations',
