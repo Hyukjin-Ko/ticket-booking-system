@@ -1,6 +1,9 @@
 spring:
   application:
     name: harness-ticket
+  threads:
+    virtual:
+      enabled: ${SPRING_THREADS_VIRTUAL_ENABLED:false}
   datasource:
     url: ${DB_URL:jdbc:postgresql://localhost:5432/ticket}
     username: ${DB_USERNAME:ticket}

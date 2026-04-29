@@ -21,7 +21,10 @@
     {
       "step": 2,
       "name": "virtual-thread-comparison",
-      "status": "pending"
+      "status": "completed",
+      "started_at": "2026-04-29T11:00:59+0900",
+      "summary": "application.yml virtual thread 토글 + BENCHMARK.md 뼈대 작성. ★ 측정·표 채우기는 사용자 수동 진행 — `SPRING_THREADS_VIRTUAL_ENABLED=false/true ./gradlew bootRun` 후 4개 시나리오 k6 run 결과 paste 필요.",
+      "completed_at": "2026-04-29T11:03:00+0900"
     }
   ],
   "created_at": "2026-04-29T10:56:19+0900"
