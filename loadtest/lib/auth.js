@@ -2,9 +2,10 @@ import http from 'k6/http';
 import { check } from 'k6';
 import { BASE_URL, JSON_HEADERS } from './config.js';
 
-/** 고유 username 생성 (VU+iteration 기반) */
+/** 고유 username 생성 (VU+iteration 기반).
+ *  username 정책 ^[가-힣A-Za-z0-9]+$ 에 맞춰 영숫자만 사용 (언더스코어·하이픈 금지). */
 export function randomUsername(prefix = 'k6user') {
-  return `${prefix}${__VU}_${__ITER}_${Date.now() % 100000}`;
+  return `${prefix}v${__VU}i${__ITER}t${Date.now() % 100000}`;
 }
 
 /** signup → login. access 토큰 반환. */
