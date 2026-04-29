@@ -1,0 +1,9 @@
+{
+  "project": "harness_ticket",
+  "phase": "5-loadtest",
+  "steps": [
+    { "step": 0, "name": "loadtest-infra", "status": "pending" },
+    { "step": 1, "name": "scenarios", "status": "pending" },
+    { "step": 2, "name": "virtual-thread-comparison", "status": "pending" }
+  ]
+}

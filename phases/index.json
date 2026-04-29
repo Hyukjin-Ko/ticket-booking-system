@@ -19,6 +19,10 @@
       "dir": "4-queue",
       "status": "completed",
       "completed_at": "2026-04-29T00:54:19+0900"
+    },
+    {
+      "dir": "5-loadtest",
+      "status": "pending"
     }
   ]
 }
