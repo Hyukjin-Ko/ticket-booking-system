@@ -21,3 +21,7 @@ build/
 
 # os
 .DS_Store
+
+# k6 측정 결과
+loadtest/results/
+!loadtest/results/.gitkeep
